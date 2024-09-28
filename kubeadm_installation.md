@@ -26,6 +26,12 @@ Run the following commands on both the master and worker nodes to prepare them f
 # disable swap
 sudo swapoff -a
 
+sudo apt update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+sudo apt install docker.io -y
+
+sudo systemctl enable --now docker # enable and start in single command.
+
 # Create the .conf file to load the modules at bootup
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
